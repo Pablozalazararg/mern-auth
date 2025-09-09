@@ -25,12 +25,12 @@ export const register = async (req,res) => {
     //creamos un token con el id proporcionado por la base de datos
     const token = jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:'7d'})
     //httpOnly:true -> solo las solicitudes http pueden acceder a la cookie 
-    res.cookie('token',token,{
-      httpOnly:true,
-      secure:process.env.NODE_ENV==='production',
-      sameSite:'None',
-      maxAge:7 * 24 * 60 * 1000
-    })
+    res.cookie('token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+            maxAge: 7 * 24 * 60 * 60 * 1000
+        });
     
     //envió de email de bienvenida
     const mailOptions = {
@@ -66,13 +66,12 @@ export const login = async (req,res)=>{
     //creamos un token con el id proporcionado por la base de datos
     const token = jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:'7d'})
     //httpOnly:true -> solo las solicitudes http pueden acceder a la cookie 
-    res.cookie('token',token,{
-      httpOnly:true,
-      secure:process.env.NODE_ENV==='production',
-      sameSite:process.env.NODE_ENV==='production' ?"none" : "lax",
-      domain: process.env.NODE_ENV==='production'  ? 'https://mern-auth-ibu8.vercel.app' : "localhost:4000",
-      maxAge:7 * 24 * 60 * 60 * 1000
-    })
+    res.cookie('token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+            maxAge: 7 * 24 * 60 * 60 * 1000
+        });
 
     return res.json({success:true})
 
