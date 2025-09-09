@@ -14,13 +14,13 @@ const app = express()
 const port = process.env.PORT || 4000
 
 connectDB()
-const allowedOrigins = ['https://mern-auth-ibu8.vercel.app']
+
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 app.use(cookieParser())
 //para poder enviar las cookies agregamos {credentials:true}
-app.use(cors({origin: allowedOrigins, credentials: true}))
+app.use(cors())
 //API Endpoint
 app.get('/',(req,res)=> res.send('Api Working'))
 app.use('/api/auth',authRouter)
