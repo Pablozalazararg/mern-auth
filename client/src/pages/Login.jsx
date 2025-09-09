@@ -18,9 +18,9 @@ const Login = () => {
   const [password,setPassword] = useState('')  
 
   const onSubitHandler = async (e) =>{
+    e.preventDefault()
     try {
     
-      e.preventDefault()
       //para enviar las cookie, tenemos que hacer que las credenciales sean verdadera
       axios.defaults.withCredentials = true
       //si el estado es iniciar session 
