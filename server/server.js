@@ -14,7 +14,8 @@ const app = express()
 const port = process.env.PORT || 4000
 
 connectDB()
-const allowedOrigins = ['http://localhost:5173']
+//quien tiene permiso a recurso, en ete caso el front
+const allowedOrigins = [process.env.ALLOWED_ORIGINS]
 
 
 app.use(express.json())
