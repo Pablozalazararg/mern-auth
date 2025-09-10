@@ -37,7 +37,7 @@ const Login = () => {
       }else{
         //si el state vale ahora 'login'
         const {data} =await axios.post(backendUrl+'/api/auth/login',{email,password})
-        
+        console.log(data)
         if(data.success){
           setIsLoggedin(true)
           getUserData()
