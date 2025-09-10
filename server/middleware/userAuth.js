@@ -11,7 +11,7 @@ const userAuth = async (req, res, next)=>{
        
        const tokenDecode = jwt.verify(token, process.env.JWT_SECRET);     
        if(!req.body){
-        req.body= new  Object()
+        req.body= new Object()
        }
        if(tokenDecode.id){
         

@@ -64,8 +64,10 @@ export const login = async (req,res)=>{
     if(!isMatch){
       return res.json({success:false,message:'Invalid Password'})
     }
+    const JWT_SECRET = process.env.JWT_SECRET 
     //creamos un token con el id proporcionado por la base de datos
-    const token = jwt.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:'7d'})
+    const token = jwt.sign({id:user._id},JWT_SECRET,{expiresIn:'7d'})
+    
     //httpOnly:true -> solo las solicitudes http pueden acceder a la cookie 
 
     res.cookie('token', token, {
