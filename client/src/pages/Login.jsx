@@ -73,13 +73,13 @@ const Login = () => {
           <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full 
           bg-[#333A5C]">
             <img src={assets.mail_icon} alt="" />
-            <input onChange={e=>setEmail(e.target.value)} value={email} className="bg-transparent outline-none" type="email" placeholder="Email id" required/>
+            <input onChange={e=>setEmail(e.target.value)} value={email} className="bg-transparent outline-none" type="email" placeholder="Email id" name='email' required/>
           </div>
 
           <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full 
           bg-[#333A5C]">
             <img src={assets.lock_icon} alt="" />
-            <input onChange={e=>setPassword(e.target.value)} value={password} className="bg-transparent outline-none" type="password" placeholder="Password" required/>
+            <input onChange={e=>setPassword(e.target.value)} value={password} className="bg-transparent outline-none" type="password" placeholder="Password" name='password' required/>
           </div>
 
           <p onClick={()=>navigate('/reset-password')} className="md-4 py-2.5 text-indigo-500 cursor-pointer">Forgot password?</p>
