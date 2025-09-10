@@ -26,7 +26,7 @@ const Login = () => {
       //si el estado es iniciar session 
       if(state==='Sign Up'){
         const {data} =await axios.post(backendUrl+'/api/auth/register',{name,email,password})
-        
+        console.log(data)
         if(data.success){
           setIsLoggedin(true)
           getUserData()
